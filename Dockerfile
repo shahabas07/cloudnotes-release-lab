@@ -10,14 +10,11 @@ RUN npm install --omit=dev
 FROM node:20-alpine AS runtime
 WORKDIR /app
 
-# NOTE: this should copy from the "deps" stage, not "build" (no such stage
-# exists in this Dockerfile).
-COPY --from=build /app/node_modules ./node_modules
+# Fixed: copy from the "deps" stage (the correct stage name)
+COPY --from=deps /app/node_modules ./node_modules
 COPY app/ ./
 
-# NOTE: secrets must never be baked into the image. This should be supplied
-# at runtime via an env file or Compose secret instead.
-ENV API_KEY=sk_live_examplekey123
+# Fixed: API_KEY removed - supplied at runtime via .env file
 ENV PORT=8080
 
 EXPOSE 8080

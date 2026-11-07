@@ -103,3 +103,9 @@ Fix all three, then document your diagnosis and fix in `release-notes.md`.
   never `terraform apply`.
 - Never push images to a paid container registry. The `registry:2` service
   in `compose.yaml` is a free, local artifact store for practice only.
+
+## tasks
+1. fix the terraform / HCL validation ault
+2. fix reusable module and state backend fault
+3. fix the container build and local artifact fault
+// after fix create a simple task submission md and provide the github link, all three task explaination and file changes, add terminal commands for the terraform validate and terraform plan, terraform apply was not done (no resource and no billing), container builds locally and docker compose health check pass, no env secrets commited
